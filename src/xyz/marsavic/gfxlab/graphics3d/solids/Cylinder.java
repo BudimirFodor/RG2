@@ -1,28 +1,34 @@
 package xyz.marsavic.gfxlab.graphics3d.solids;
 
+import xyz.marsavic.functions.interfaces.F1;
+import xyz.marsavic.geometry.Vector;
 import xyz.marsavic.gfxlab.Vec3;
 import xyz.marsavic.gfxlab.graphics3d.Hit;
+import xyz.marsavic.gfxlab.graphics3d.Material;
 import xyz.marsavic.gfxlab.graphics3d.Ray;
 import xyz.marsavic.gfxlab.graphics3d.Solid;
+import xyz.marsavic.utils.Numeric;
 
 public class Cylinder implements Solid {
 
     private final Vec3 c;
     private final double r;
+    private final F1<Material, Vector> mapMaterial;
 
     // transient
     private final double rSqr;
 
 
 
-    private Cylinder(Vec3 c, double r) {
+    private Cylinder(Vec3 c, double r, F1<Material, Vector> mapMaterial) {
         this.c = c;
         this.r = r;
         rSqr = r * r;
+        this.mapMaterial = mapMaterial;
     }
 
-    public static Cylinder cr(Vec3 c, double r) {
-        return new Cylinder(c, r);
+    public static Cylinder cr(Vec3 c, double r, F1<Material, Vector> mapMaterial) {
+        return new Cylinder(c, r, mapMaterial);
     }
 
 
@@ -76,6 +82,20 @@ public class Cylinder implements Solid {
         @Override
         public Vec3 n_() {
             return n().div(r);
+        }
+
+        @Override
+        public Material material() {
+            return Cylinder.this.mapMaterial.at(uv());
+        }
+
+        @Override
+        public Vector uv() {
+            Vec3 n = n();
+            return Vector.xy(
+                    Numeric.atan2T(n.z(), n.x()),
+                    -2 * Numeric.asinT(n.y() / r) + 0.5
+            );
         }
 
     }

@@ -16,7 +16,7 @@ public interface Solid {
 	
 	
 	default Hit firstHit(Ray ray) {
-		return firstHit(ray, 0);
+		return firstHit(ray, 1e-9);
 	}
 	
 }
