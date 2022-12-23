@@ -1,8 +1,5 @@
 package xyz.marsavic.gfxlab.graphics3d;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public interface Solid {
 	
@@ -16,7 +13,15 @@ public interface Solid {
 	
 	
 	default Hit firstHit(Ray ray) {
-		return firstHit(ray, 1e-9);
+		return firstHit(ray, 0);
+	}
+	
+	
+	default boolean hitBetween(Ray ray, double afterTime, double beforeTime) {
+		Hit hit = firstHit(ray);
+		if (hit == null) return false;
+		double t = hit.t();
+		return (afterTime < t) && (t < beforeTime);
 	}
 	
 }

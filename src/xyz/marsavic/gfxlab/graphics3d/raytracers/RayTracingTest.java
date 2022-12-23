@@ -14,9 +14,9 @@ import xyz.marsavic.gfxlab.graphics3d.solids.HalfSpace;
 
 public class RayTracingTest implements ColorFunctionT {
 
-	Ball ball = Ball.cr(Vec3.xyz(0, 0, 2), 1, uv -> new Material(Color.hsb(uv.x() * 6, 0.8, uv.y())));
+	Ball ball = Ball.cr(Vec3.xyz(0, 0, 2), 1, uv -> Material.matte(Color.hsb(uv.x() * 6, 0.8, uv.y())));
 //	Cylinder cylinder = Cylinder.cr(Vec3.xyz(0,0,2),1);
-	HalfSpace halfSpace = HalfSpace.pn(Vec3.xyz(0, -1, 0), Vec3.xyz(0, 1, 0), uv -> new Material(Color.hsb(uv.x() * 6, 0.8, uv.y())));
+	HalfSpace halfSpace = HalfSpace.pn(Vec3.xyz(0, -1, 0), Vec3.xyz(0, 1, 0), uv -> Material.matte(Color.hsb(uv.x() * 6, 0.8, uv.y())));
 	
 	@Override
 	public Color at(double t, Vector p) {

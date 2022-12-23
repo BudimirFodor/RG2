@@ -23,11 +23,11 @@ public class GenerativeBallScene extends Scene.Base{
             double size = round(rng.nextDouble(), 0.1, 5);
             double hue = round(rng.nextDouble(), 0.05, 1);
             solidCollection.add(Ball.cr(Vec3.xyz(rng.nextDouble() * 2 - 1, rng.nextDouble() * 2 - 1, rng.nextDouble() * 2 - 2), size,
-                    uv -> new Material(Color.hsb(hue, 0.75, 0.6))));
+                    uv -> Material.matte(Color.hsb(hue, 0.75, 0.6))));
         }
 
         solidCollection.add(HalfSpace.pn(Vec3.xyz(0, -1, 0), Vec3.xyz(0, 1, 0),
-                uv -> new Material(Color.hsb(0, 0.2, 0.8))
+                uv -> Material.matte(Color.hsb(0, 0.2, 0.8))
         ));
 
         solid = Group.of(solidCollection);
