@@ -1,6 +1,6 @@
 package xyz.marsavic.gfxlab.graphics3d.solids;
 
-import xyz.marsavic.functions.interfaces.F1;
+import xyz.marsavic.functions.F1;
 import xyz.marsavic.geometry.Vector;
 import xyz.marsavic.gfxlab.Vec3;
 import xyz.marsavic.gfxlab.graphics3d.Hit;
@@ -14,16 +14,19 @@ public class Ball implements Solid {
 	
 	private final Vec3 c;
 	private final double r;
+	private final boolean inverted;
 	private final F1<Material, Vector> mapMaterial;
 	
 	// transient
 	private final double rSqr;
 	
 	
+	/** Negative r will make the ball inverted (the resulting solid is a complement of a ball). */
 	private Ball(Vec3 c, double r, F1<Material, Vector> mapMaterial) {
 		this.c = c;
 		this.r = r;
 		rSqr = r * r;
+		inverted = r < 0;
 		this.mapMaterial = mapMaterial;
 	}
 	
@@ -45,7 +48,7 @@ public class Ball implements Solid {
 	
 	
 	@Override
-	public HitBall firstHit(Ray ray, double afterTime) {
+	public Hit firstHit(Ray ray, double afterTime) {
 		Vec3 e = c().sub(ray.p());                                // Vector from the ray origin to the ball center
 		
 		double dSqr = ray.d().lengthSquared();
@@ -57,7 +60,7 @@ public class Ball implements Solid {
 			if (l - m > afterTime) return new HitBall(ray, l - m);
 			if (l + m > afterTime) return new HitBall(ray, l + m);
 		}
-		return null;
+		return Hit.AtInfinity.axisAligned(ray.d(), inverted);
 	}
 	
 	
