@@ -1,6 +1,6 @@
 package xyz.marsavic.gfxlab.elements;
 
-import xyz.marsavic.functions.interfaces.F0;
+import xyz.marsavic.functions.F0;
 
 
 public class Output<T> extends Invalidatable.Base implements HasOutput<T> {

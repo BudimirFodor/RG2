@@ -1,6 +1,6 @@
 package xyz.marsavic.gfxlab.elements;
 
-import xyz.marsavic.functions.interfaces.F3;
+import xyz.marsavic.functions.F3;
 
 
 public abstract class ElementF3<R, P0, P1, P2> extends ElementF<R> {

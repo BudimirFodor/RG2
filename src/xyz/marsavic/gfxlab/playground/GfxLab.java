@@ -13,10 +13,13 @@ import xyz.marsavic.gfxlab.graphics3d.cameras.ThinLensFOV;
 import xyz.marsavic.gfxlab.graphics3d.cameras.TransformedCamera;
 import xyz.marsavic.gfxlab.graphics3d.raytracers.PathTracer;
 import xyz.marsavic.gfxlab.graphics3d.raytracers.RayTracerSimple;
+import xyz.marsavic.gfxlab.graphics3d.scene.BoundedVolumeHierarchyTest;
 import xyz.marsavic.gfxlab.graphics3d.scene.CityOfNight;
 import xyz.marsavic.gfxlab.graphics3d.scene.GITest;
 import xyz.marsavic.gfxlab.graphics3d.scene.GoldTrinket;
+import xyz.marsavic.gfxlab.graphics3d.scene.Mirrors;
 import xyz.marsavic.gfxlab.graphics3d.scene.Oranges;
+import xyz.marsavic.gfxlab.graphics3d.scene.RefractionTest;
 import xyz.marsavic.gfxlab.gui.UtilsGL;
 import xyz.marsavic.gfxlab.tonemapping.ColorTransform;
 import xyz.marsavic.gfxlab.tonemapping.ToneMapping;
@@ -83,8 +86,8 @@ public class GfxLab {
 														),
 														e(16)
 												),
-*/
-												e(PathTracer::new,
+
+/*												e(PathTracer::new,
 														e(CityOfNight::new, e(50), e(0x3B660712F3CFA050L)),
 														e(TransformedCamera::new,
 																e(ThinLensFOV::new, e(1.0/3), e(7.0), e(0.1)),
@@ -96,6 +99,27 @@ public class GfxLab {
 														),
 														e(16)
 												),
+
+ */
+												e(PathTracer::new,
+														e(BoundedVolumeHierarchyTest::new, e(20)),
+														e(TransformedCamera::new,
+																e(Perspective::new, e(1.0/3)),
+																e(Affine.IDENTITY
+																		.then(Affine.translation(Vec3.xyz(0, 0, -4)))
+																)
+														),
+														e(16)
+												),
+//												e(RayTracerSimple::new,
+//														e(BoundedVolumeHierarchyTest::new, e(20)),
+//														e(TransformedCamera::new,
+//																e(Perspective::new, e(1.0/3)),
+//																e(Affine.IDENTITY
+//																		.then(Affine.translation(Vec3.xyz(0, 0, -4)))
+//																)
+//														)
+//												),
 										
 												e(TransformationsFromSize.toGeometric, eSize)
 										)

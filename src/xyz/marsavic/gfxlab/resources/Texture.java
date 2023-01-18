@@ -1,7 +1,7 @@
 package xyz.marsavic.gfxlab.resources;
 
 import javafx.scene.image.Image;
-import xyz.marsavic.functions.interfaces.F1;
+import xyz.marsavic.functions.F1;
 import xyz.marsavic.geometry.Vector;
 import xyz.marsavic.gfxlab.Color;
 import xyz.marsavic.gfxlab.graphics3d.Material;

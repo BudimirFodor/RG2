@@ -2,6 +2,9 @@
   <library name="javafx-controls-17.0.1-win">
     <CLASSES>
       <root url="jar://$USER_HOME$/GfxLab-2021-2022/lib/javafx-controls-17.0.1-win.jar!/" />
+      <root url="jar://$USER_HOME$/GfxLab-2021-2022/lib/javafx-graphics-17.0.1-win.jar!/" />
+      <root url="jar://$USER_HOME$/GfxLab-2021-2022/lib/javafx-swing-17.0.1-win.jar!/" />
+      <root url="jar://$USER_HOME$/GfxLab-2021-2022/lib/javafx-base-17.0.1-win.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

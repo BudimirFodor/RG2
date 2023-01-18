@@ -1,9 +1,9 @@
 package xyz.marsavic.gfxlab.elements;
 
-import xyz.marsavic.functions.interfaces.F0;
-import xyz.marsavic.functions.interfaces.F1;
-import xyz.marsavic.functions.interfaces.F2;
-import xyz.marsavic.functions.interfaces.F3;
+import xyz.marsavic.functions.F0;
+import xyz.marsavic.functions.F1;
+import xyz.marsavic.functions.F2;
+import xyz.marsavic.functions.F3;
 
 public abstract class ElementF<R> extends Element implements HasOutput<R> {
 	

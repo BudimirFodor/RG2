@@ -71,6 +71,11 @@ public record Material(
 	public static Material glass(double k) { return glass(Color.gray(k)); }
 	public static Material glass(        ) { return glass(1.0); }
 	public static final Material GLASS = glass();
+
+	public static Material air(Color  c) { return BLACK; }
+	public static Material air(double k) { return air(Color.gray(k)); }
+	public static Material air(        ) { return mirror(1.0); }
+	public static final Material AIR = air();
 	
 	public static Material light(Color  c) { return BLACK.emittance(c); }
 	public static Material light(double k) { return light(Color.gray(k)); }

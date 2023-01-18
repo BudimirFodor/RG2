@@ -17,5 +17,6 @@
     <orderEntry type="library" name="kordamp.ikonli.materialdesign2.pack" level="project" />
     <orderEntry type="library" name="kordamp.ikonli.core" level="project" />
     <orderEntry type="library" name="kordamp.ikonli.javafx" level="project" />
+    <orderEntry type="library" name="javafx-controls-17.0.1-win" level="project" />
   </component>
 </module>

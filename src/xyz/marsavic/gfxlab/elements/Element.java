@@ -1,7 +1,7 @@
 package xyz.marsavic.gfxlab.elements;
 
-import xyz.marsavic.functions.interfaces.A1;
-import xyz.marsavic.functions.interfaces.F0;
+import xyz.marsavic.functions.A1;
+import xyz.marsavic.functions.F0;
 import xyz.marsavic.reactions.values.EventInvalidated;
 import xyz.marsavic.utils.Caches;
 import xyz.marsavic.utils.Reflection;
