@@ -62,8 +62,14 @@ public class Ball implements Solid {
 		}
 		return Hit.AtInfinity.axisAligned(ray.d(), inverted);
 	}
-	
-	
+
+	@Override
+	public Solid boundingVolume() {
+		Vec3 p = Vec3.xyz(c.x() - r, c.y() - r, c.z() - r);
+		Vec3 q = Vec3.xyz(c.x() + r, c.y() + r, c.z() + r);
+		return Box.$.pq(p, q).material(Material.AIR);
+	}
+
 	class HitBall extends Hit.RayT {
 		
 		protected HitBall(Ray ray, double t) {

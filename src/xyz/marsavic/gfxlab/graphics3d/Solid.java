@@ -13,13 +13,15 @@ public interface Solid {
 	 * the hit at infinity.
 	 */
 	Hit firstHit(Ray ray, double afterTime);
-	
-	
+
+	default Solid boundingVolume() {
+		return null;
+	}
+
 	default Hit firstHit(Ray ray) {
 		return firstHit(ray, 0);
 	}
-	
-	
+
 	default boolean hitBetween(Ray ray, double afterTime, double beforeTime) {
 		double t = firstHit(ray).t();
 		return (afterTime < t) && (t < beforeTime);
@@ -87,8 +89,8 @@ public interface Solid {
 			}
 		};
 	}
-	
-	
+
+
 	static Solid union(Solid... solids) {
 		return atLeast(1, solids);
 	}
@@ -100,9 +102,9 @@ public interface Solid {
 	static Solid complement(Solid solid) {
 		return (ray, afterTime) -> solid.firstHit(ray, afterTime).inverted();
 	}
-	
+
 	static Solid difference(Solid solidA, Solid solidB) {
 		return intersection(solidA, complement(solidB));
 	}
-	
+
 }

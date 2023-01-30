@@ -58,8 +58,25 @@ public class Box implements Solid {
 	public Vec3 r() {
 		return d().div(2);
 	}
-	
-	
+
+	public double x() { return Math.abs(q.x() - p.x())/2; }
+
+	public double y() { return Math.abs(q.y() - p.y())/2; }
+
+	public double z() { return Math.abs(q.z() - p.z())/2; }
+
+	public double x_min() { return c().x() - x(); }
+
+	public double x_max() { return c().x() + x(); }
+
+	public double y_min() { return c().y() - y(); }
+
+	public double y_max() { return c().y() + y(); }
+
+	public double z_min() { return c().z() - z(); }
+
+	public double z_max() { return c().z() + z(); }
+
 	public boolean contains(Vec3 o) {
 		return o.sub(p).sign().sub(q.sub(o).sign()).allZero();
 	}
@@ -85,8 +102,12 @@ public class Box implements Solid {
 		}
 		return Hit.AtInfinity.axisAlignedOut(ray.d());
 	}
-	
-	
+
+	@Override
+	public Solid boundingVolume() {
+		return new Box(p, q).material(Material.AIR);
+	}
+
 	final class HitBox implements Hit {
 		private final double t;
 		private final Vec3 n_;

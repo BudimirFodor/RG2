@@ -51,7 +51,7 @@ public class BoundedVolumeHierarchyTest extends Scene.Base {
                     uv -> Material.matte(Color.hsb(hue, 0.75, 0.6))));
         }
 
-        solids.add(BoundedVolumeHierarchy.createSequentially(boundedVolumeHierarchySolids));
+        solids.add(BoundedVolumeHierarchy.createBySurfaceAreaHeuristic(boundedVolumeHierarchySolids));
 
         solid = Group.of(solids);
     }
